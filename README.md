@@ -13,7 +13,19 @@ This single-file README provides everything you need to build and run a Qdrant v
 └── data/                     # Your text files here (e.g. file1.txt, file2.txt)
 ```
 
+
 ---
+
+### Included Example Text File
+
+The `data/` folder contains an example text file: **story.txt**.
+
+- **File:** `story.txt`
+- **Description:** A humorous, original story about Reginald Thistlewhiskers, an adventurous rabbit, and his friends in Willowbrook Valley. The story is rich with character names, places, lore, and events, making it useful for vector search, retrieval-augmented generation, and QA demos.
+- **Authorship:** This story was generated with the assistance of OpenAI's ChatGPT for demonstration and testing purposes. You are free to use, modify, and redistribute this text as needed.
+
+---
+
 
 ## 1. Prerequisites
 
@@ -35,6 +47,9 @@ Qdrant listens on port 6333.
 
 ---
 
+The Qdrant Dashboard can be accessed at:[http://localhost:6333/dashboard#/welcome](http://localhost:6333/dashboard#/welcome)
+
+
 ## 3. Ingestion Client
 
 Build the ingestion client Docker image:
@@ -50,7 +65,7 @@ docker run --rm \
   --name qdrant-ingest \
   --network host \
   -e DATA_DIR=/data \
-  -v "$(pwd)/my_texts:/data" \
+  -v "$(pwd)/data:/data" \
   qdrant-ingest
 ```
 
@@ -65,7 +80,7 @@ docker run --rm \
 After ingestion, check Qdrant:
 
 ```bash
-curl http://localhost:6333/collections/text_documents/points/count
+curl http://localhost:6333/collections/rag/
 ```
 
 ---
