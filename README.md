@@ -89,11 +89,3 @@ curl http://localhost:6333/collections/rag/
 
 * To change collection name: Edit `COLL` in `ingest_texts.py`
 * To use a different embedding model: Change the model name in `ingest_texts.py`
-* For Docker bridge network (alternative to host):
-
-```bash
-docker network create qdrant-net
-docker run -d --name qdrant-server --network qdrant-net -p 6333:6333 qdrant-server
-docker run --rm --name qdrant-ingest --network qdrant-net -e DATA_DIR=/data -v "$(pwd)/my_texts:/data" qdrant-ingest
-```
-
